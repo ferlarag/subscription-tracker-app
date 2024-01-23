@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import NavBar from "@/components/navigation-bar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,8 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className={`font-sans ${inter.variable} bg-zinc-100`}>
+        <TRPCReactProvider>
+          <NavBar />
+          <MaxWidthWrapper className="py-10">{children}</MaxWidthWrapper>
+        </TRPCReactProvider>
       </body>
     </html>
   );
